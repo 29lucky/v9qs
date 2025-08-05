@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>कुछ मत पूछो। + Lucky's Truth</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #000;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px 10px;
+      margin: 0;
+    }
+
+    .toggle-btn {
+      background: #ff66cc;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #39ff14;
+      transition: 0.4s ease;
+    }
+
+    .toggle-btn:hover {
+      background: #66ccff;
+      box-shadow: 0 0 20px #00ffff;
+    }
+
+    .box-wrapper {
+      margin-top: 30px;
+      padding: 5px;
+      border-radius: 20px;
+      background: linear-gradient(45deg, #dd0303, #00ffff, #ffff66);
+      background-size: 300% 300%;
+      animation: borderMove 6s linear infinite;
+      display: none;
+    }
+
+    .box {
+      background: linear-gradient(270deg, #ff66cc, #66ccff, #ffff66, #ff66cc);
+      background-size: 600% 600%;
+      animation: backgroundFlow 10s ease infinite, slideIn 0.8s ease forwards;
+      color: black;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #39ff14;
+      max-width: 600px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+      padding: 40px;
+    }
+
+    @keyframes borderMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes backgroundFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Truth Box */
+    .truth-box {
+      background: #000;
+      border: 5px solid;
+      border-image: linear-gradient(45deg, red, orange, yellow) 1;
+      border-radius: 20px;
+      padding: 25px;
+      max-width: 800px;
+      width: 100%;
+      margin-top: 40px;
+      animation: borderGlow 6s linear infinite;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes borderGlow {
+      0% {
+        border-image: linear-gradient(45deg, red, orange, yellow) 1;
+      }
+
+      100% {
+        border-image: linear-gradient(405deg, red, orange, yellow) 1;
+      }
+    }
+
+    .text-line {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 15px 0;
+      opacity: 0;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      .text-line {
+        font-size: 1.1rem;
+        padding: 0 10px;
+      }
+
+      .box {
+        font-size: 48px;
+        padding: 30px;
+      }
+
+      .toggle-btn {
+        font-size: 18px;
+        padding: 12px 24px;
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .left {
+      animation-name: slideInLeft;
+    }
+
+    .right {
+      animation-name: slideInRight;
+    }
+
+    .text-line:nth-child(odd),
+    .text-line:nth-child(even) {
+      animation-delay: calc(0.2s * var(--i));
+    }
+
+    .c1 {
+      color: #ff4d4d;
+      text-shadow: 0 0 10px #4dff4d;
+    }
+
+    .c2 {
+      color: #ffa64d;
+      text-shadow: 0 0 10px #4dd2ff;
+    }
+
+    .c3 {
+      color: #ffff4d;
+      text-shadow: 0 0 10px #ff4dff;
+    }
+
+    .c4 {
+      color: #4dff4d;
+      text-shadow: 0 0 10px #ff4d4d;
+    }
+
+    .c5 {
+      color: #4dd2ff;
+      text-shadow: 0 0 10px #ffcc00;
+    }
+
+    .c6 {
+      color: #b84dff;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+
+    .c7 {
+      color: #ff66cc;
+      text-shadow: 0 0 10px #66ff66;
+    }
+
+    .c8 {
+      color: #00ffcc;
+      text-shadow: 0 0 10px #ff6666;
+    }
+
+    .c9 {
+      color: #66ccff;
+      text-shadow: 0 0 10px #ffff66;
+    }
+
+    .c10 {
+      color: #cc66ff;
+      text-shadow: 0 0 10px #00ff66;
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="toggle-btn" onclick="toggleBox()">🎯 Direct Summary</button>
+
+  <div class="box-wrapper" id="boxWrapper">
+    <div class="box">"Don't ask me anything."</div>
+  </div>
+
+  <div class="truth-box">
+    <!-- Keep your text lines same, only size improved -->
+    <div class="text-line left c1" style="--i:1">देखो भइया जी, हम आपको बता तो देते हैं...</div>
+    <div class="text-line right c2" style="--i:2">लेकिन बात ये है कि जब भी हम अपने बारे में</div>
+    <div class="text-line left c3" style="--i:3">या अपने किसी plan के बारे में</div>
+    <div class="text-line right c4" style="--i:4">या जो कुछ कर रहे होते हैं वो किसी और को बता देते हैं</div>
+    <div class="text-line left c5" style="--i:5">तो वो चीज़ fail हो जाती है।</div>
+    <div class="text-line right c6" style="--i:6">हमारे पास इसका unlimited proof है।</div>
+    <div class="text-line left c7" style="--i:7">YouTube start किया — views आ रहे थे</div>
+    <div class="text-line right c8" style="--i:8">19K–25K तक, दोस्त को बताया — 7 दिन में सब गिर गया</div>
+    <div class="text-line left c9" style="--i:9">channel delete हो गया। दोस्ती बताई — 7 दिन में खत्म।</div>
+    <div class="text-line right c10" style="--i:10">2 month से 2 hour भी study नहीं हो रही।</div>
+    <div class="text-line left c1" style="--i:11">दिल से dosti होती है — नज़र लग जाती है।</div>
+    <div class="text-line right c2" style="--i:12">हमारी उम्र 19 ही है — अब तक 6 दोस्त बनाए</div>
+    <div class="text-line left c3" style="--i:13">बस 2 ही बचे — वो भी call only</div>
+    <div class="text-line right c4" style="--i:14">School change सबसे बड़ा reason रहा दोस्ती खत्म होने का</div>
+    <div class="text-line left c5" style="--i:15">11वीं के दो दोस्त — सोचा चार साल साथ रहेंगे</div>
+    <div class="text-line right c6" style="--i:16">लेकिन उन्हें एक college मिला — हमें अलग</div>
+    <div class="text-line left c7" style="--i:17">Lucky इतना हूं कि जो चाहा वो मिला</div>
+    <div class="text-line right c8" style="--i:18">लेकिन जब तक न बताएं — सब सटीक चलता है</div>
+    <div class="text-line left c9" style="--i:19">Respect हर किसी को दिल से देता हूं</div>
+    <div class="text-line right c10" style="--i:20">बाकी बातें बताने लायक बहुत हैं लेकिन बताना policy के खिलाफ़ है।</div>
+  </div>
+
+  <script>
+    function toggleBox() {
+      const wrapper = document.getElementById("boxWrapper");
+      wrapper.style.display = (wrapper.style.display === "block") ? "none" : "block";
+    }
+  </script>
+
+</body>
+
+</html>
